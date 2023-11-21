@@ -1,4 +1,10 @@
+using System.Configuration;
+using System.Drawing.Text;
+using UAV_Site.Service;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Configuration.Bind("Project",new Config());
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
 
