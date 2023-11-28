@@ -12,7 +12,20 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.Bind("Project",new Config());
 builder.Services.AddRazorPages();
-builder.Services.AddControllersWithViews();
+
+builder.Services.AddAuthorization(authorization =>
+{
+    authorization.AddPolicy("AdminArea", policy =>
+    {
+        policy.RequireRole("admin");
+    });
+});
+builder.Services.AddControllersWithViews(a =>
+{
+    a.Conventions.Add(new AdminAreaAuthorization("Admin", "AdminArea"));
+});
+
+
 builder.Services.AddTransient<ITextFieldsRepository, EFTextFieldsRepository>();
 builder.Services.AddTransient<IServiceItemRepository, EFServiceItemsRepository>();
 builder.Services.AddTransient<DataManager>();
@@ -31,9 +44,9 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.Cookie.Name = "UAV-Site";
+    options.Cookie.Name = "UAV-SiteAuth";
     options.Cookie.HttpOnly = true;
-    options.LoginPath = "account/login";
+    options.LoginPath = "/account/login";
     options.AccessDeniedPath = "/account/accessdenied";
     options.SlidingExpiration = true;
 });
@@ -58,6 +71,10 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "admin",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 
 app.Run();
