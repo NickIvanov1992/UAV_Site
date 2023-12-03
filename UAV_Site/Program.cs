@@ -13,17 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.Bind("Project",new Config());
 builder.Services.AddRazorPages();
 
-builder.Services.AddAuthorization(authorization =>
-{
-    authorization.AddPolicy("AdminArea", policy =>
-    {
-        policy.RequireRole("admin");
-    });
-});
-builder.Services.AddControllersWithViews(a =>
-{
-    a.Conventions.Add(new AdminAreaAuthorization("Admin", "AdminArea"));
-});
+
+
 
 
 builder.Services.AddTransient<ITextFieldsRepository, EFTextFieldsRepository>();
@@ -50,6 +41,17 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = "/account/accessdenied";
     options.SlidingExpiration = true;
 });
+builder.Services.AddAuthorization(authorization =>
+{
+    authorization.AddPolicy("AdminArea", policy =>
+    {
+        policy.RequireRole("admin");
+    });
+});
+builder.Services.AddControllersWithViews(a =>
+{
+    a.Conventions.Add(new AdminAreaAuthorization("Admin", "AdminArea"));
+});
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -69,12 +71,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.MapControllerRoute(
     name: "admin",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
