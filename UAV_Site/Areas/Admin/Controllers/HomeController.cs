@@ -5,7 +5,7 @@ using UAV_Site.Domain;
 namespace UAV_Site.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles ="admin")]
+
     public class HomeController : Controller
     {
         private readonly DataManager dataManager;
@@ -15,7 +15,7 @@ namespace UAV_Site.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            return View(dataManager.ServiceItem.GetServiceItems());
+            return View(dataManager.ServiceItems.GetServiceItems());
         }
     }
 }

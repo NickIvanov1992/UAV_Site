@@ -31,7 +31,7 @@
                 <span asp-validation-for="Text"></span>
             </div>
             <div class="div-box">
-                <label asp-for="TitleImagePath"></label>
+                <label asp-for="TitleImagePath" enctype="multipart/form-data"></label>
                 <input type="file" name="titleImageFile" id="titleImageFile" />
                 <div>
                     <img class="img-block" src="~/images/@Model.TitleImagePath" />
