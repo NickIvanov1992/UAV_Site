@@ -8,25 +8,25 @@ namespace UAV_Site.Domain.Entities
         [Required]
         public Guid Id { get;set; }
 
-        [Display(Name = "Название (заголовок)")]
+        [Display(Name = "Name (Title)")]
         public virtual string? Title { get; set; }
 
-        [Display(Name = "Краткое описание")]
+        [Display(Name = "Short description")]
         public virtual string? Subtitle { get; set; }
 
-        [Display(Name = "Полное описание")]
+        [Display(Name = "Full Description")]
         public virtual string? Text { get; set; }
 
-        [Display(Name = "Титульная картинка")]
+        [Display(Name = "Image title")]
         public virtual string? TitleImagePath { get; set; }
 
-        [Display(Name = "SEO метатег Title")]
+        [Display(Name = "SEO metaTag Title")]
         public string? MetaTitle { get; set; }
 
-        [Display(Name = "SEO метатег Description")]
+        [Display(Name = "SEO metaTag Description")]
         public string? MetaDescription { get; set; }
 
-        [Display(Name = "SEO метатег Keywords")]
+        [Display(Name = "SEO metaTag Keywords")]
         public string? MetaKeywords { get; set; }
 
         [DataType(DataType.Time)]

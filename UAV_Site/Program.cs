@@ -13,10 +13,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.Bind("Project",new Config());
 builder.Services.AddRazorPages();
 
-
-
-
-
 builder.Services.AddTransient<ITextFieldsRepository, EFTextFieldsRepository>();
 builder.Services.AddTransient<IServiceItemRepository, EFServiceItemsRepository>();
 builder.Services.AddTransient<DataManager>();

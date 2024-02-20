@@ -7,10 +7,10 @@ namespace UAV_Site.Domain.Entities
         [Required]
         public string? CodeWord { get; set; }
 
-        [Display(Name = "Название страницы (Заголовок)")]
-        public override string? Title { get; set; } = "Информация по странице";
+        [Display(Name = "Page title (Headline)")]
+        public override string? Title { get; set; } = "Page information";
 
-        [Display(Name ="Содержание страницы")]
-        public override string? Text { get; set; } = "Содержание заполняется администратором";
+        [Display(Name ="Page content")]
+        public override string? Text { get; set; } = "The content is filled in by the administrator";
     }
 }

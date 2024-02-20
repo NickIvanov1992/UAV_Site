@@ -4,9 +4,8 @@
 <head>
 	@await Html.PartialAsync("MetatagsPartial")
 	@await Html.PartialAsync("CssPartial")
-
 </head>
-<body>
+<body class="left-sidebar is-preload">
 	<div id="page-wrapper">
 		@await Html.PartialAsync("HeaderPartial")
 
@@ -15,11 +14,11 @@
 				<div class="row main-row">
 					<div class="col-8 col-12-medium">
 						@RenderBody()
-						
+
 					</div>
 					@await Html.PartialAsync("SideBarPartial")
 				</div>
-				
+
 			</div>
 		</div>
 
@@ -27,6 +26,6 @@
 
 	</div>
 	@await Html.PartialAsync("ScriptsPartial")
-	
+
 </body>
 </html>
