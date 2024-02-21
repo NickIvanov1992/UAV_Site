@@ -9,7 +9,9 @@
     <div>
         <h3>Наши услуги</h3>
         <div class="div-box">
-            <a asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" asp-route-id="">Добавить услугу</a>
+            <form asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" asp-route-id="">
+                <input type="submit" value="Добавить услугу"/>
+            </form>
         </div>
         @if (Model.Any())
         {
@@ -22,10 +24,13 @@
                             <input type="hidden" name="id" value="@entity.Id">
                             <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">Удалить</a>
                         </form>
-
-                        <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
-                            @($"{entity.Title}")
-                        </a>
+                        <h3>
+                            <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
+                                @($"{entity.Title}")
+                            </a>
+                        </h3>
+                        <p></p>
+                        
                     </div>
                 }
             </div>
@@ -37,9 +42,5 @@
     <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageServices">Наши продукты</a>
     <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageContacts">Контакты</a>
 </div>
-<div class="div-box">
-    <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
-        <input type="submit" value="Выйти"/>
-    </form>
-</div>
+
 </div>

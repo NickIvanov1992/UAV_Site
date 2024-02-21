@@ -10,12 +10,16 @@
 <div>
     @if(Model.Any())
     {
+        <h3>
+            Предлагаем вашему вниманию
+        </h3>
         <ul class="big-image-list">
         @foreach(ServiceItem entity in Model)
         {
+            
             <li>
                 <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
-                    <img src="~/images/@entity.TitleImagePath" alt="" class="left" />
+                    <img src="~/images/@entity.TitleImagePath" alt="" width="600px" class="left" />
                 </a>
                 <h4>@entity.Title</h4>
                 <p>@entity.Subtitle</p>

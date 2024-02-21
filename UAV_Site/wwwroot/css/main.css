@@ -18,7 +18,8 @@ footer, header, hgroup, menu, nav, output, ruby,
 section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
-  border: 0;
+  border: 2px;
+  border-color: black;
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
@@ -84,12 +85,17 @@ html {
 }
 
 body {
-  background: #f5f7fa;
-  font-family: "Source Sans Pro", sans-serif;
-  font-weight: 300;
-  color: #52575c;
-  line-height: 1.75em;
-  font-size: 14pt;
+    background-image: url('/images/UAV.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+   
+
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 300;
+    color: #52575c;
+    line-height: 1.75em;
+    font-size: 14pt;
 }
 body.is-preload *, body.is-preload *:before, body.is-preload *:after {
   -moz-animation: none !important;
@@ -2443,3 +2449,11 @@ button:hover,
     margin-bottom: 1em;
   }
 }
+
+   #small-image-list {
+        width: 50px;
+    }
+
+    #big-image-list  {
+        width: 75px;
+    }

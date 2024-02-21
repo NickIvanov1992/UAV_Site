@@ -22,6 +22,7 @@ namespace UAV_Site.Controllers
             ViewBag.returnUrl = returnUrl;
             return View(new LoginViewModel());
         }
+       
 
         [HttpPost]
         [AllowAnonymous]
